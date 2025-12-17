@@ -16,6 +16,9 @@ public class LineParser {
     public void parseLine(String lineOfText,
                           List<Person> people,
                           StateTracker stateTracker) {
+        if (!lineOfText.matches(".*\\|.*\\|.*")) {
+            throw new IllegalArgumentException("The input does not contain the necessary split characters");
+        }
         String[] lineOfTextAsArray = lineOfText.split("\\|");
         String xmlType = lineOfTextAsArray[0].toUpperCase();
         XMLType type = XMLType.fromCode(xmlType);
