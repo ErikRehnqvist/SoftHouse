@@ -1,7 +1,7 @@
 
 import util.FileReader;
 
-public class Main {
+public class Converter {
     private static final String FILE_PATH = "test-data.txt";
 
     static void main() {
