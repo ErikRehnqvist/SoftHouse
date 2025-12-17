@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import model.People;
 import model.Person;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,15 +29,17 @@ public class FileReader {
             LineParser lineParser = new LineParser();
             String lineOfText = reader.readLine().trim();
             List<Person> people = new ArrayList<>();
-            StateTracker     stateTracker = new StateTracker();
-            while (lineOfText != null) {
+            StateTracker stateTracker = new StateTracker();
+            while (StringUtils.isNotBlank(lineOfText)) {
                 lineParser.parseLine(lineOfText, people, stateTracker);
                 lineOfText = reader.readLine();
             }
             //System.out.println(people);
-            XmlMapper xmlMapper = new XmlMapper();
-            xmlMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
-            xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+            XmlMapper xmlMapper = XmlMapper.builder()
+                    .defaultPropertyInclusion(JsonInclude.Value.empty()
+                                    .withValueInclusion(JsonInclude.Include.NON_EMPTY))
+                    .enable(SerializationFeature.INDENT_OUTPUT)
+                    .build();
             People peopleWrapper = new People(people);
             String xml = xmlMapper.writeValueAsString(peopleWrapper);
             System.out.println(xml);
