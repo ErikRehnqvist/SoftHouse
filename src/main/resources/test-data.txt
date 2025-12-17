@@ -6,4 +6,17 @@ A|Haga Slott|Stockholm|10002
 F|Carl Philip|1979
 T|0768-101802|08-101802
 P|Barack|Obama
-A|1600 Pennsylvania Avenue|Washington, D.C
+A|1600 Pennsylvania Avenue|Washington, D.C|20500
+F|Michelle|1964
+F|Malia|1998
+F|Sasha|2001
+P|Stefan|Löfven
+A|Björkvägen 12|Stockholm|11456
+T|070-1234567|08-7654321
+P|Erna|Solberg
+A|Kirkegata 3|Oslo|0153
+F|Sindre|1985
+F|Håkon|1989
+T|047-998877|021-556677
+P|Angela|Merkel
+A|Am Kupfergraben 6|Berlin|10117
